@@ -1,0 +1,11 @@
+FROM php:7.4-cli
+
+RUN apt-get update && apt-get install -y libpq-dev unzip \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo_pgsql \
+    && pecl install xdebug-2.9.5 \
+    && docker-php-ext-enable xdebug
+
+RUN wget https://getcomposer.org/installer -O - -q | php -- --install-dir=/bin --filename=composer --quiet
+
+WORKDIR /var/www
