@@ -8,4 +8,4 @@ RUN apt-get update && apt-get install -y libpq-dev unzip \
 
 RUN wget https://getcomposer.org/installer -O - -q | php -- --install-dir=/bin --filename=composer --quiet
 
-WORKDIR /var/www
+WORKDIR /app
