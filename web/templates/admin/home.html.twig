@@ -1,0 +1,53 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block body %}
+    <h2 class="text-center">Properties</h2>
+    <table class="table table-condensed table-bordered text-center">
+        <thead>
+        <tr>
+            <th>World name</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ properties[0] }}</td>
+            <td>{{ properties[4] }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-condensed table-bordered text-center">
+        <thead>
+        <tr>
+            <th>Difficulty</th>
+            <th>Max players count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ properties[8] }}</td>
+            <td>{{ properties[16] }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+
+    <h2 class="text-center">Whitelist</h2>
+    <p class="text-center">Players count: <b><?= count($players) ?></b></p>
+    <table class="table table-condensed table-bordered text-center">
+        <thead>
+        <tr>
+            <th>Player</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
