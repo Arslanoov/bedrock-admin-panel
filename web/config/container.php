@@ -1,6 +1,7 @@
 <?php
 
 use Furious\Container\Container;
+use Psr\Container\ContainerInterface;
 
 $container = new Container();
 
@@ -17,5 +18,9 @@ array_map(
     },
     glob(__DIR__ . '/dependencies/{*}.php', GLOB_BRACE)
 );
+
+$container->set(ContainerInterface::class, function (Container $container) {
+    return $container;
+});
 
 return $container;

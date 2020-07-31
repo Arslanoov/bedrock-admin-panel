@@ -1,0 +1,152 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block body %}
+    <h2 class="text-center">Properties</h2>
+
+    <div class="mx-auto col-md-2 col-sm-4">
+        <a href="{{ path('admin.properties.edit.form') }}" class="btn btn-primary col-sm-12">Edit</a>
+    </div>
+
+    <hr>
+
+    <h3 class="text-center">Main settings</h3>
+
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Server name</th>
+                <th>Max players</th>
+                <th>Online mode</th>
+                <th>White list enabled</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ properties.mainInfo.serverName }}</td>
+                <td>{{ properties.mainInfo.maxPlayers }}</td>
+                <td>{{ properties.mainInfo.onlineMode ? 'True' : 'False' }}</td>
+                <td>{{ properties.mainInfo.whiteList ? 'True' : 'False' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <h3 class="text-center">World settings</h3>
+
+    <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+            <th>Gamemode</th>
+            <th>Difficulty</th>
+            <th>Allow cheats</th>
+            <th>View distance</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ properties.worldInfo.gamemode }}</td>
+                <td>{{ properties.worldInfo.difficulty }}</td>
+                <td>{{ properties.worldInfo.allowCheats ? 'True': 'False' }}</td>
+                <td>{{ properties.worldInfo.viewDistance }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+            <th>Tick distance</th>
+            <th>World seed</th>
+            <th>Default player permission</th>
+            <th>Texture pack required</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ properties.worldInfo.tickDistance }}</td>
+            <td>{{ properties.worldInfo.worldSeed }}</td>
+            <td>{{ properties.worldInfo.defaultPlayerPermission }}</td>
+            <td>{{ properties.worldInfo.texturePackRequired ? 'True' : 'False' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <h3 class="text-center">Port settings</h3>
+
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>IPv4 Port</th>
+                <th>IPv6 Port</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ properties.portInfo.serverPort }}</td>
+                <td>{{ properties.portInfo.serverIpv6Port }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <h3 class="text-center">Movement settings</h3>
+
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Server authoritative movement</th>
+                <th>Player movement score threshold</th>
+                <th>Player movement distance threshold</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ properties.movementInfo.authoritativeMovement ? 'True' : 'False' }}</td>
+                <td>{{ properties.movementInfo.scoreThreshold }}</td>
+                <td>{{ properties.movementInfo.distanceThreshold }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+            <th>Player movement duration threshold (ms)</th>
+            <th>Correct player movement</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ properties.movementInfo.durationThreshold }}</td>
+            <td>{{ properties.movementInfo.correctPlayerMovement ? 'True' : 'False' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <h3 class="text-center">Other settings</h3>
+
+    <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+            <th>Content log file enabled</th>
+            <th>Compression threshold</th>
+            <th>Player idle timeout</th>
+            <th>Max threads</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ properties.otherInfo.contentLogFile ? 'True' : 'False' }}</td>
+            <td>{{ properties.otherInfo.compression }}</td>
+            <td>{{ properties.otherInfo.playerIdleTimeout }}</td>
+            <td>{{ properties.otherInfo.maxThreads }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+{% endblock %}

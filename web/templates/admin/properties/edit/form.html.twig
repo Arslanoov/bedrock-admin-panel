@@ -1,0 +1,326 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block body %}
+    <h2 class="text-center">Edit Properties</h2>
+
+    <form method="POST" action="{{ path('admin.properties.edit.request') }}" class="properties-edit-form">
+        <hr>
+        <h3 class="text-center">Main settings</h3>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="serverName"><b>Server Name</b></label>
+                    <p>
+                        Used as the server name. <br>
+                        Allowed values: Any string
+                    </p>
+                    <input type="text" name="server_name" class="form-control" id="serverName" value="{{ properties.mainInfo.serverName }}">
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="max_players"><b>Max players</b></label>
+                    <p>
+                        The maximum number of players that can play on the server.
+                        Allowed values: Any positive integer
+                    </p>
+                    <input type="number" name="max_players" class="form-control" id="max_players" min="1" value="{{ properties.mainInfo.maxPlayers }}">
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="onlineMode"><b>Online mode</b></label>
+                    <p>
+                        If true then all connected players must be authenticated to Xbox Live.
+                        Clients connecting to remote (non-LAN) servers will always require Xbox Live authentication regardless of this setting.
+                        If the server accepts connections from the Internet, then it's highly recommended to enable online-mode.
+                    </p>
+                    <select name="online_mode" id="onlineMode" class="form-control">
+                        <option value="true" {{ properties.mainInfo.onlineMode == 'true' ? 'selected' : '' }}>True</option>
+                        <option value="false" {{ properties.mainInfo.onlineMode == 'true' ? '' : 'selected' }}>False</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="whitelist"><b>White list</b></label>
+                    <p>
+                        If true then all connected players must be listed in the separate whitelist file.
+                    </p>
+                    <select name="whitelist" id="whitelist" class="form-control">
+                        <option value="true" {{ properties.mainInfo.whiteList == 'true' ? 'selected' : '' }}>True</option>
+                        <option value="false" {{ properties.mainInfo.whiteList == 'true' ? '' : 'selected' }}>False</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h3 class="text-center">World settings</h3>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="gamemode"><b>Gamemode</b></label>
+                    <p>
+                        Sets the game mode for new players.
+                    </p>
+                    <select name="gamemode" id="gamemode" class="form-control">
+                        <option value="survival" {{ properties.worldInfo.gamemode == 'survival' ? 'selected' : '' }}>Survival</option>
+                        <option value="creative" {{ properties.worldInfo.gamemode == 'creative' ? 'selected' : '' }}>Creative</option>
+                        <option value="adventure" {{ properties.worldInfo.gamemode == 'adventure' ? 'selected' : '' }}>Adventure</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="difficulty"><b>Difficulty</b></label>
+                    <p>
+                        Sets the difficulty of the world.
+                    </p>
+                    <select name="difficulty" id="difficulty" class="form-control">
+                        <option value="peaceful" {{ properties.worldInfo.difficulty == 'peaceful' ? 'selected' : '' }}>Peaceful</option>
+                        <option value="easy" {{ properties.worldInfo.difficulty == 'easy' ? 'selected' : '' }}>Easy</option>
+                        <option value="normal" {{ properties.worldInfo.difficulty == 'normal' ? 'selected' : '' }}>Normal</option>
+                        <option value="hard" {{ properties.worldInfo.difficulty == 'hard' ? 'selected' : '' }}>Hard</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="allowCheats"><b>Allow cheats</b></label>
+                    <p>
+                        If true then cheats like commands can be used.
+                    </p>
+                    <select name="allow_cheats" id="allowCheats" class="form-control">
+                        <option value="false" {{ properties.worldInfo.allowCheats == 'true' ? '' : 'selected' }}>False</option>
+                        <option value="true" {{ properties.worldInfo.allowCheats == 'true' ? 'selected' : '' }}>True</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="viewDistance"><b>View distance</b></label>
+                    <p>
+                        The maximum allowed view distance in number of chunks.
+                    </p>
+                    <input type="number" min="1" name="view_distance" id="viewDistance" class="form-control" value="{{ properties.worldInfo.viewDistance }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="tickDistance"><b>Tick distance</b></label>
+                    <p>
+                        The world will be ticked this many chunks away from any player.
+                        Allowed values: Integers in the range [4, 12]
+                    </p>
+                    <input type="number" min="4" max="12" name="tick_distance" id="tickDistance" class="form-control" value="{{ properties.worldInfo.tickDistance }}">
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="worldSeed"><b>World seed</b></label>
+                    <p>
+                        Use to randomize the world
+                        Allowed values: Any string
+                    </p>
+                    <input type="text" name="world_seed" id="worldSeed" class="form-control" value="{{ properties.worldInfo.worldSeed }}">
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="defaultPlayerPermission"><b>Default player permission</b></label>
+                    <p>
+                        Permission level for new players joining for the first time.
+                    </p>
+                    <select name="default_player_permission" id="defaultPlayerPermission" class="form-control">
+                        <option value="visitor" {{ properties.worldInfo.defaultPlayerPermission == 'visitor' ? 'selected' : '' }}>Visitor</option>
+                        <option value="member" {{ properties.worldInfo.defaultPlayerPermission == 'member' ? 'selected' : '' }}>Member</option>
+                        <option value="operator" {{ properties.worldInfo.defaultPlayerPermission == 'operator' ? 'selected' : '' }}>Operator</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="texturePackRequired"><b>TexturePack required</b></label>
+                    <p>
+                        Force clients to use texture packs in the current world
+                    </p>
+                    <select name="texture_pack_required" id="texturePackRequired" class="form-control">
+                        <option value="false" {{ properties.worldInfo.texturePackRequired == 'true' ? '' : 'selected' }}>False</option>
+                        <option value="true" {{ properties.worldInfo.texturePackRequired == 'true' ? 'selected' : '' }}>True</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h3 class="text-center">Port settings</h3>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="serverPort"><b>IPv4 port</b></label>
+                    <p>
+                        Which IPv4 port the server should listen to.
+                        Allowed values: Integers in the range [1, 65535]
+                    </p>
+                    <input type="number" min="1" maxlength="65535" name="server_port" id="serverPort" class="form-control" value="{{ properties.portInfo.serverPort }}">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="serverIpv6Port"><b>IPv6 port</b></label>
+                    <p>
+                        Which IPv6 port the server should listen to.
+                        Allowed values: Integers in the range [1, 65535]
+                    </p>
+                    <input type="number" min="1" maxlength="65535" name="server_ipv6_port" id="serverIpv6Port" class="form-control" value="{{ properties.portInfo.serverIpv6Port }}">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h3 class="text-center">Movement settings</h3>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="authMovement"><b>Server authoritative movement</b></label>
+                    <p>
+                        Enables server authoritative movement. If true, the server will replay local user input on
+                        the server and send down corrections when the client's position doesn't match the server's.
+                        Corrections will only happen if correct-player-movement is set to true.
+                    </p>
+                    <select name="auth_movement" id="authMovement" class="form-control">
+                        <option value="false" {{ properties.movementInfo.authoritativeMovement == 'true' ? '' : 'selected' }}>False</option>
+                        <option value="true" {{ properties.movementInfo.authoritativeMovement == 'true' ? 'selected' : '' }}>True</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="scoreThreshold"><b>Player movement score threshold</b></label>
+                    <p>
+                        The number of incongruent time intervals needed before abnormal behavior is reported.
+                        Disabled by server authoritative movement.
+                    </p>
+                    <input type="text" name="score_threshold" id="scoreThreshold" class="form-control" value="{{ properties.movementInfo.scoreThreshold }}">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="distanceThreshold"><b>Player movement distance threshold</b></label>
+                    <p>
+                        The difference between server and client positions that needs to be exceeded before abnormal behavior is detected.
+                        Disabled by server-authoritative-movement.
+                    </p>
+                    <input type="text" name="distance_threshold" id="distanceThreshold" class="form-control" value="{{ properties.movementInfo.distanceThreshold }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="correctPlayerMovement"><b>Correct player movement</b></label>
+                    <p>
+                        If true, the client position will get corrected to the server position if the movement score exceeds the threshold.
+                    </p>
+                    <select name="correct_player_movement" id="correctPlayerMovement" class="form-control">
+                        <option value="false" {{ properties.movementInfo.correctPlayerMovement == 'true' ? '' : 'selected' }}>False</option>
+                        <option value="true" {{ properties.movementInfo.correctPlayerMovement == 'true' ? 'selected' : '' }}>True</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="durationThreshold"><b>Player movement duration threshold (ms)</b></label>
+                    <p>
+                        The duration of time the server and client positions can be out of sync (as defined by player-movement-distance-threshold)
+                        before the abnormal movement score is incremented. This value is defined in milliseconds.
+                        Disabled by server-authoritative-movement.
+                    </p>
+                    <input type="text" name="duration_threshold" id="durationThreshold" class="form-control" value="{{ properties.movementInfo.durationThreshold }}">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h3 class="text-center">Other settings</h3>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="contentLogFile"><b>Content log file enabled</b></label>
+                    <p>
+                        Enables logging content errors to a file
+                    </p>
+                    <select name="content_log_file" id="contentLogFile" class="form-control">
+                        <option value="false" {{ properties.otherInfo.contentLogFile == 'true' ? '' : 'selected' }}>False</option>
+                        <option value="true" {{ properties.otherInfo.contentLogFile == 'true' ? 'selected' : '' }}>True</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="compression"><b>Compression threshold</b></label>
+                    <p>
+                        Determines the smallest size of raw network payload to compress
+                    </p>
+                    <input type="number" min="1" name="compression" id="compression" class="form-control" value="{{ properties.otherInfo.compression }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="playerIdleTimeout"><b>Player idle timeout</b></label>
+                    <p>
+                        After a player has idled for this many minutes they will be kicked. If set to 0 then players can idle indefinitely.
+                        Allowed values: Any non-negative integer.
+                    </p>
+                    <input type="number" min="0" name="player_idle_timeout" id="playerIdleTimeout" class="form-control" value="{{ properties.otherInfo.playerIdleTimeout }}">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="maxThreads"><b>Max threads</b></label>
+                    <p>
+                        After a player has idled for this many minutes they will be kicked. If set to 0 then players can idle indefinitely.
+                        Allowed values: Any non-negative integer.
+                    </p>
+                    <input type="number" min="0" name="max_threads" id="maxThreads" class="form-control" value="{{ properties.otherInfo.maxThreads }}">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="mx-auto col-sm-4 col-md-2">
+                <button type="submit" class="btn btn-primary col-sm-12">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

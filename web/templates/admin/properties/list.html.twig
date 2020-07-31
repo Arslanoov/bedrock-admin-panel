@@ -1,0 +1,97 @@
+server-name={{ properties.mainInfo.serverName }}
+# Used as the server name
+# Allowed values: Any string
+
+gamemode={{ properties.worldInfo.gamemode }}
+# Sets the game mode for new players.
+# Allowed values: "survival", "creative", or "adventure"
+
+difficulty={{ properties.worldInfo.difficulty }}
+# Sets the difficulty of the world.
+# Allowed values: "peaceful", "easy", "normal", or "hard"
+
+allow-cheats={{ properties.worldInfo.allowCheats ? 'true' : 'false' }}
+# If true then cheats like commands can be used.
+# Allowed values: "true" or "false"
+
+max-players={{ properties.mainInfo.maxPlayers }}
+# The maximum number of players that can play on the server.
+# Allowed values: Any positive integer
+
+online-mode={{ properties.mainInfo.onlineMode ? 'true' : 'false' }}
+# If true then all connected players must be authenticated to Xbox Live.
+# Clients connecting to remote (non-LAN) servers will always require Xbox Live authentication regardless of this setting.
+# If the server accepts connections from the Internet, then it\s highly recommended to enable online-mode.
+# Allowed values: "true" or "false"
+
+white-list={{ properties.mainInfo.whiteList ? 'true' : 'false' }}
+# If true then all connected players must be listed in the separate whitelist.json file.
+# Allowed values: "true" or "false"
+
+server-port={{ properties.portInfo.serverPort }}
+# Which IPv4 port the server should listen to.
+# Allowed values: Integers in the range [1, 65535]
+
+server-portv6={{ properties.portInfo.serverIpv6Port }}
+# Which IPv6 port the server should listen to.
+# Allowed values: Integers in the range [1, 65535]
+
+view-distance={{ properties.worldInfo.viewDistance }}
+# The maximum allowed view distance in number of chunks.
+# Allowed values: Any positive integer.
+
+tick-distance={{ properties.worldInfo.tickDistance }}
+# The world will be ticked this many chunks away from any player.
+# Allowed values: Integers in the range [4, 12]
+
+player-idle-timeout={{ properties.otherInfo.playerIdleTimeout }}
+# After a player has idled for this many minutes they will be kicked. If set to 0 then players can idle indefinitely.
+# Allowed values: Any non-negative integer.
+
+max-threads={{ properties.otherInfo.maxThreads }}
+# Maximum number of threads the server will try to use. If set to 0 or removed then it will use as many as possible.
+# Allowed values: Any positive integer.
+
+"level-name=Bedrock level"
+# Allowed values: Any string
+
+level-seed={{ properties.worldInfo.worldSeed }}
+# Use to randomize the world
+# Allowed values: Any string
+
+default-player-permission-level={{ properties.worldInfo.defaultPlayerPermission }}
+# Permission level for new players joining for the first time.
+# Allowed values: "visitor", "member", "operator"
+
+texturepack-required={{ properties.worldInfo.texturePackRequired ? 'true' : 'false' }}
+# Force clients to use texture packs in the current world
+# Allowed values: "true" or "false"
+
+content-log-file-enabled={{ properties.otherInfo.contentLogFile ? 'true' : 'false' }}
+# Enables logging content errors to a file
+# Allowed values: "true" or "false"
+
+compression-threshold={{ properties.otherInfo.compression }}
+# Determines the smallest size of raw network payload to compress
+# Allowed values: 0-65535
+
+server-authoritative-movement={{ properties.movementInfo.authoritativeMovement ? 'true' : 'false' }}
+# Enables server authoritative movement. If true, the server will replay local user input on
+# the server and send down corrections when the client's position doesnt match the servers.
+# Corrections will only happen if correct-player-movement is set to true.
+
+player-movement-score-threshold={{ properties.movementInfo.scoreThreshold }}
+# The number of incongruent time intervals needed before abnormal behavior is reported.
+# Disabled by server-authoritative-movement.
+
+player-movement-distance-threshold={{ properties.movementInfo.distanceThreshold }}
+# The difference between server and client positions that needs to be exceeded before abnormal behavior is detected.
+# Disabled by server-authoritative-movement.
+
+player-movement-duration-threshold-in-ms={{ properties.movementInfo.durationThreshold }}
+# The duration of time the server and client positions can be out of sync (as defined by player-movement-distance-threshold)
+# before the abnormal movement score is incremented. This value is defined in milliseconds.
+# Disabled by server-authoritative-movement.
+
+correct-player-movement={{ properties.movementInfo.correctPlayerMovement ? 'true' : 'false' }}
+# If true, the client position will get corrected to the server position if the movement score exceeds the threshold.

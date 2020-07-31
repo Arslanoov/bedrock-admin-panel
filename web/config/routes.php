@@ -20,3 +20,7 @@ $app->get('admin.whitelist.add.form', '/admin/whitelist/add-player/form', Action
 $app->post('admin.whitelist.add.request', '/admin/whitelist/add-player/request', Action\Admin\Whitelist\Add\RequestAction::class);
 $app->post('admin.whitelist.remove', '/admin/whitelist/remove-player/{name}', Action\Admin\Whitelist\RemoveAction::class);
 
+## Properties
+$app->get('admin.properties.index', '/admin/properties', Action\Admin\Properties\IndexAction::class);
+$app->get('admin.properties.edit.form', '/admin/properties/edit/form', Action\Admin\Properties\Edit\FormAction::class);
+$app->post('admin.properties.edit.request', '/admin/properties/edit/request', Action\Admin\Properties\Edit\RequestAction::class);

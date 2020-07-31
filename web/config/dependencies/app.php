@@ -5,6 +5,8 @@ use Framework\Http\Psr7\ResponseFactory;
 use App\Http\Middleware\ErrorHandler;
 use Framework\Template\TemplateRenderer;
 use Furious\Container\Container;
+use Furious\Psr7\Factory\ServerRequestFactory;
+use Furious\Psr7\ServerRequest;
 
 /** @var Container $container */
 
@@ -18,4 +20,8 @@ $container->set(ErrorHandler::class, function (Container $container) {
         $container->get(TemplateRenderer::class),
         boolval($container->get('config')['debug'])
     );
+});
+
+$container->set(ServerRequest::class, function (Container $container) {
+    return (new ServerRequestFactory)->fromGlobals();
 });
