@@ -1,0 +1,14 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block body %}
+    <form action="{{ path('admin.whitelist.add.request') }}" method="POST">
+        <label for="name">Player name</label>
+        <input type="text" name="name" id="name">
+
+        <p>
+            Uuid will be generated automatically
+        </p>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+{% endblock %}

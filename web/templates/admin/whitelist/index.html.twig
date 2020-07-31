@@ -1,0 +1,34 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block body %}
+    <h2 class="text-center">Whitelist</h2>
+    <p class="text-center">Players count: <b>{{ players|length }}</b></p>
+    <p>
+        <a href="{{ path('admin.whitelist.add.form') }}" class="btn btn-success">
+            Add player
+        </a>
+    </p>
+
+    <table class="table table-condensed table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+                <tr>
+                    <td>{{ player.name }}</td>
+                    <td>
+                        <form method="POST" action="{{ path('admin.whitelist.remove', {'name': player.name}) }}">
+                            <button type="submit" onsubmit="return confirm('Are you sure?')" class="btn btn-danger">
+                                Remove
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

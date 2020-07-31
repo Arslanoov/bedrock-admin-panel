@@ -1,7 +1,9 @@
 <?php
 
+use App\Service\Server\Properties\DummyPropertiesService;
 use App\Service\Server\Properties\FilePropertiesService;
 use App\Service\Server\Properties\PropertiesService;
+use App\Service\Server\Whitelist\DummyWhitelistService;
 use App\Service\Server\Whitelist\FileWhitelistService;
 use App\Service\Server\Whitelist\WhitelistService;
 use Furious\Container\Container;

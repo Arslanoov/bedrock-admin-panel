@@ -1,6 +1,8 @@
 {% extends 'layouts/admin.html.twig' %}
 
 {% block body %}
+    <a href="{{ path('admin.whitelist.index') }}">Whitelist</a>
+
     <h2 class="text-center">Properties</h2>
     <table class="table table-condensed table-bordered text-center">
         <thead>
@@ -33,21 +35,4 @@
     </table>
 
     <br><br>
-
-    <h2 class="text-center">Whitelist</h2>
-    <p class="text-center">Players count: <b><?= count($players) ?></b></p>
-    <table class="table table-condensed table-bordered text-center">
-        <thead>
-        <tr>
-            <th>Player</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for player in players %}
-            <tr>
-                <td>{{ player.name }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 {% endblock %}

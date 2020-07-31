@@ -2,41 +2,41 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Action\Admin;
+namespace App\Http\Action\Admin\Whitelist;
 
-use App\Service\Server\Properties\PropertiesService;
+use App\Service\Server\Whitelist\WhitelistService;
 use Framework\Http\Psr7\ResponseFactory;
 use Framework\Template\TemplateRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-final class HomeAction implements RequestHandlerInterface
+final class IndexAction implements RequestHandlerInterface
 {
-    private PropertiesService $properties;
+    private WhitelistService $whitelist;
     private ResponseFactory $response;
     private TemplateRenderer $template;
 
     /**
-     * HomeAction constructor.
-     * @param PropertiesService $properties
+     * IndexAction constructor.
+     * @param WhitelistService $whitelist
      * @param ResponseFactory $response
      * @param TemplateRenderer $template
      */
-    public function __construct(PropertiesService $properties, ResponseFactory $response, TemplateRenderer $template)
+    public function __construct(WhitelistService $whitelist, ResponseFactory $response, TemplateRenderer $template)
     {
-        $this->properties = $properties;
+        $this->whitelist = $whitelist;
         $this->response = $response;
         $this->template = $template;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $properties = $this->properties->get();
+        $players = $this->whitelist->getList();
 
         return $this->response->html(
-            $this->template->render('admin/home', [
-                'properties' => $properties
+            $this->template->render('admin/whitelist/index', [
+                'players' => $players
             ])
         );
     }

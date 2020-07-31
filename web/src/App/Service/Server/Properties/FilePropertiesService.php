@@ -8,7 +8,7 @@ final class FilePropertiesService implements PropertiesService
 {
     public function get(): array
     {
-        $text = file_get_contents('/opt/mcpe-data/server.properties');
+        $text = file_get_contents('/app/data/server.properties');
         $info = explode("\n", $text);
 
         $pieces = [];

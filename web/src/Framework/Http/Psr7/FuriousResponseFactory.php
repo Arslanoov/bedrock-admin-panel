@@ -7,6 +7,7 @@ namespace Framework\Http\Psr7;
 use Furious\Psr7\Response\EmptyResponse;
 use Furious\Psr7\Response\HtmlResponse;
 use Furious\Psr7\Response\JsonResponse;
+use Furious\Psr7\Response\RedirectResponse;
 use Furious\Psr7\Response\TextResponse;
 use Furious\Psr7\Response\XmlResponse;
 use Psr\Http\Message\ResponseInterface;
@@ -36,5 +37,10 @@ final class FuriousResponseFactory implements ResponseFactory
     public function empty(): ResponseInterface
     {
         return new EmptyResponse();
+    }
+
+    public function redirect(string $uri, int $code = 302): ResponseInterface
+    {
+        return new RedirectResponse($uri, $code);
     }
 }

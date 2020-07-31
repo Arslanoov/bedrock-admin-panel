@@ -17,4 +17,6 @@ interface ResponseFactory
     public function empty(): ResponseInterface;
 
     public function text(string $text): ResponseInterface;
+
+    public function redirect(string $uri, int $code = 302): ResponseInterface;
 }
