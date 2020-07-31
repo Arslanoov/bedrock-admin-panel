@@ -20,7 +20,7 @@ final class RestartCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $content = shell_exec(shell_exec('RET=`docker container restart mcpe`;echo $RET'));
+        $content = shell_exec('RET=`docker container restart mcpe`;echo $RET');
 
         $output->writeln($content);
 

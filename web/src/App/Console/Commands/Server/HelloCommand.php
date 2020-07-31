@@ -20,7 +20,7 @@ final class HelloCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $content = shell_exec(shell_exec('RET=`docker run hello-world`;echo $RET'));
+        $content = shell_exec('RET=`docker run hello-world`;echo $RET');
 
         $output->writeln($content);
 
