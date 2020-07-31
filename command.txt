@@ -1,0 +1,11 @@
+cd / &&
+git clone https://github.com/Arslanoov/bedrock-admin-panel.git &&
+cd /bedrock-admin-panel &&
+apt install docker.io &&
+mkdir -p /opt/mcpe-data &&
+docker run -itd --restart=always --name=mcpe --net=host \
+  -v /opt/mcpe-data:/data \
+  lomot/minecraft-bedrock:1.16.1.02 &&
+docker-compose build &&
+docker-compose up -d &&
+cd web && composer install
