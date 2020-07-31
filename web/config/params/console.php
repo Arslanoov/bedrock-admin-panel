@@ -8,7 +8,9 @@ return [
             Commands\HelloCommand::class,
             Commands\Cycle\RunMigrationsCommand::class,
             Commands\Cycle\CreateMigrationCommand::class,
-            Commands\User\CreateCommand::class
+            Commands\User\CreateCommand::class,
+            Commands\Server\HelloCommand::class,
+            Commands\Server\RestartCommand::class
         ]
     ]
 ];
