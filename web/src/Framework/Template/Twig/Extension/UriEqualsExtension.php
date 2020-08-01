@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Framework\Template\Twig\Extension;
 
-use Furious\Psr7\ServerRequest;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -31,8 +31,8 @@ final class UriEqualsExtension extends AbstractExtension
 
     public function equals(string $inputUri): bool
     {
-        /** @var ServerRequest $request */
-        $request = $this->container->get(ServerRequest::class);
+        /** @var ServerRequestInterface $request */
+        $request = $this->container->get(ServerRequestInterface::class);
         $uri = (string) $request->getUri();
         return $inputUri === $uri;
     }

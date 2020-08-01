@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Framework\Http\Application;
 use Furious\HttpRunner\Runner;
-use Furious\Psr7\ServerRequest;
+use Psr\Http\Message\ServerRequestInterface;
 
 chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
@@ -18,7 +18,7 @@ require 'vendor/autoload.php';
     require 'config/pipeline.php';
     require 'config/routes.php';
 
-    $request = $container->get(ServerRequest::class);
+    $request = $container->get(ServerRequestInterface::class);
     $response = $app->handle($request);
 
     $response =

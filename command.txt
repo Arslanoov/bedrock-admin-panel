@@ -14,7 +14,7 @@ sudo groupadd docker &&
 sudo gpasswd -a ${USER} docker &&
 sudo service docker restart &&
 
-// sudo visudo
-
 cd ../ &&
 nohup php -S 0.0.0.0:57152 -t command/ > /dev/null 2>&1 &
+
+// sudo visudo
