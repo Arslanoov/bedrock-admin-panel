@@ -12,7 +12,8 @@ final class McpeWorldUploader implements WorldUploader
 
     public function upload(UploadedFileInterface $world): string
     {
-        $world->moveTo(self::WORLDS_PATH);
-        return self::WORLDS_PATH . '/' . $world->getClientFilename();
+        $path = self::WORLDS_PATH . '/' . $world->getClientFilename();
+        $world->moveTo($path);
+        return $path;
     }
 }

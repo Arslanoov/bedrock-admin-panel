@@ -16,5 +16,5 @@ sudo service docker restart &&
 
 cd ../ &&
 nohup php -S 0.0.0.0:57152 -t command/ > /dev/null 2>&1 &
-
+chmod -R 777 /opt/mcpe-data/worlds
 // sudo visudo
