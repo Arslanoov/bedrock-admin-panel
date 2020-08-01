@@ -30,3 +30,7 @@ $app->get('admin.info.index', '/admin/server-info', Action\Admin\Info\HomeAction
 $app->post('admin.info.start', '/admin/server/start', Action\Admin\Info\StartAction::class);
 $app->post('admin.info.stop', '/admin/info/stop', Action\Admin\Info\StopAction::class);
 $app->post('admin.info.restart', '/admin/info/restart', Action\Admin\Info\RestartAction::class);
+
+## World and backups
+$app->get('admin.world.index', '/admin/world', Action\Admin\World\IndexAction::class);
+$app->post('admin.world.upload', '/admin/world/upload', Action\Admin\World\UploadAction::class);

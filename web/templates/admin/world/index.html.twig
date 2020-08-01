@@ -1,0 +1,14 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block body %}
+    <h2>Upload new world</h2>
+    <p>World max size: 1024m</p>
+
+    <form action="{{ path('admin.world.upload') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file">World folder ZIP</label>
+            <input type="file" name="file" id="file" class="form-control">
+        </div>
+        <button class="btn btn-primary" type="submit">Upload</button>
+    </form>
+{% endblock %}

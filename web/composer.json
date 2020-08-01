@@ -20,7 +20,8 @@
     "symfony/console": "^5.1",
     "ramsey/uuid": "^4.1",
     "webmozart/assert": "^1.9",
-    "laminas/laminas-diactoros": "^2.3"
+    "laminas/laminas-diactoros": "^2.3",
+    "ext-zip": "*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master"

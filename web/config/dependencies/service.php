@@ -7,6 +7,10 @@ use App\Service\Server\ServerService;
 use App\Service\Server\Whitelist\DummyWhitelistService;
 use App\Service\Server\Whitelist\FileWhitelistService;
 use App\Service\Server\Whitelist\WhitelistService;
+use App\Service\Server\World\McpeWorldUploader;
+use App\Service\Server\World\WorldUploader;
+use App\Service\Zip\UnzipService;
+use App\Service\Zip\UnzipServiceInterface;
 use Furious\Container\Container;
 
 /** @var Container $container */
@@ -21,4 +25,12 @@ $container->set(PropertiesService::class, function (Container $container) {
 
 $container->set(ServerService::class, function (Container $container) {
     return $container->get(McpeServerService::class);
+});
+
+$container->set(UnzipServiceInterface::class, function (Container $container) {
+    return $container->get(UnzipService::class);
+});
+
+$container->set(WorldUploader::class, function (Container $container) {
+    return $container->get(McpeWorldUploader::class);
 });

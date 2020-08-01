@@ -54,12 +54,12 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin.home') }}">
+                        <a class="nav-link {{ uriEquals(path('admin.world.index')) ? 'active' : ''}}" href="{{ path('admin.world.index') }}">
                             World and backups
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ uriEquals(path('admin.info.index')) ? 'active' : ''}}">
                         <a class="nav-link" href="{{ path('admin.info.index') }}">
                             Info
                         </a>
