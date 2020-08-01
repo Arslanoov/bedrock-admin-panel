@@ -8,4 +8,13 @@ docker run -itd --restart=always --name=mcpe --net=host \
   lomot/minecraft-bedrock:1.16.1.02 &&
 docker-compose build &&
 docker-compose up -d &&
-cd web && composer install
+cd web && composer install &&
+
+sudo groupadd docker &&
+sudo gpasswd -a ${USER} docker &&
+sudo service docker restart &&
+
+// sudo visudo
+
+cd ../ &&
+nohup php -S 0.0.0.0:57152 -t command/ > /dev/null 2>&1 &

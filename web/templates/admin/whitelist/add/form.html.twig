@@ -1,9 +1,18 @@
 {% extends 'layouts/admin.html.twig' %}
 
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('admin.home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('admin.whitelist.index') }}">Whitelist</a></li>
+        <li class="breadcrumb-item active"><a href="#">Add player</a></li>
+    </ol>
+{% endblock %}
+
 {% block body %}
     <form action="{{ path('admin.whitelist.add.request') }}" method="POST">
-        <label for="name">Player name</label>
-        <input type="text" name="name" id="name">
+
+        <label for="name"><b>Player name</b></label>
+        <input type="text" name="name" id="name" class="form-control col-sm-6">
 
         <p>
             Uuid will be generated automatically

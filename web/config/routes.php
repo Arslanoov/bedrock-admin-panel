@@ -24,3 +24,9 @@ $app->post('admin.whitelist.remove', '/admin/whitelist/remove-player/{name}', Ac
 $app->get('admin.properties.index', '/admin/properties', Action\Admin\Properties\IndexAction::class);
 $app->get('admin.properties.edit.form', '/admin/properties/edit/form', Action\Admin\Properties\Edit\FormAction::class);
 $app->post('admin.properties.edit.request', '/admin/properties/edit/request', Action\Admin\Properties\Edit\RequestAction::class);
+
+## Info
+$app->get('admin.info.index', '/admin/server-info', Action\Admin\Info\HomeAction::class);
+$app->post('admin.info.start', '/admin/server/start', Action\Admin\Info\StartAction::class);
+$app->post('admin.info.stop', '/admin/info/stop', Action\Admin\Info\StopAction::class);
+$app->post('admin.info.restart', '/admin/info/restart', Action\Admin\Info\RestartAction::class);

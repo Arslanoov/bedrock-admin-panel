@@ -1,9 +1,16 @@
 {% extends 'layouts/admin.html.twig' %}
 
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('admin.home') }}">Home</a></li>
+        <li class="breadcrumb-item active"><a href="#">Whitelist</a></li>
+    </ol>
+{% endblock %}
+
 {% block body %}
     <h2 class="text-center">Whitelist</h2>
     <p class="text-center">Players count: <b>{{ players|length }}</b></p>
-    <p>
+    <p class="text-center">
         <a href="{{ path('admin.whitelist.add.form') }}" class="btn btn-success">
             Add player
         </a>

@@ -1,0 +1,30 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('admin.home') }}">Home</a></li>
+        <li class="breadcrumb-item active"><a href="#">Info</a></li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-row mb-3">
+        <form action="{{ path('admin.info.start') }}" method="POST" class="mr-1">
+            <button class="btn btn-success" type="submit">
+                Start
+            </button>
+        </form>
+
+        <form action="{{ path('admin.info.stop') }}" method="POST" class="mr-1">
+            <button class="btn btn-danger" type="submit">
+                Stop
+            </button>
+        </form>
+
+        <form action="{{ path('admin.info.restart') }}" method="POST" class="mr-1">
+            <button class="btn btn-primary" type="submit">
+                Restart
+            </button>
+        </form>
+    </div>
+{% endblock %}

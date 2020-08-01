@@ -1,5 +1,13 @@
 {% extends 'layouts/admin.html.twig' %}
 
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('admin.home') }}">Home</a></li>
+        <li class="breadcrumb-item active"><a href="{{ path('admin.properties.index') }}">Properties</a></li>
+        <li class="breadcrumb-item active"><a href="#">Edit</a></li>
+    </ol>
+{% endblock %}
+
 {% block body %}
     <h2 class="text-center">Edit Properties</h2>
 
