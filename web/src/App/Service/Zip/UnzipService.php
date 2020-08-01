@@ -9,7 +9,7 @@ use ZipArchive;
 
 final class UnzipService implements UnzipServiceInterface
 {
-    private const WORLDS_PATH = '/app/data/worlds/level';
+    private const WORLD_PATH = '/app/data/worlds/level';
 
     public function unzipIntoFolder(string $zipFilePath): void
     {
@@ -19,11 +19,13 @@ final class UnzipService implements UnzipServiceInterface
             throw new RuntimeException('Can not unzip file.');
         }
 
-        if (!$zip->extractTo(self::WORLDS_PATH)) {
+        if (!$zip->extractTo(self::WORLD_PATH)) {
             throw new RuntimeException('Can not extract files.');
         }
 
-        $zip->extractTo(self::WORLDS_PATH);
+        $zip->extractTo(self::WORLD_PATH);
         $zip->close();
+
+        chmod(self::WORLD_PATH, 0777);
     }
 }

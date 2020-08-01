@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin Panel</title>
+    <title>{% block title %}Admin Panel{% endblock %}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    {% block css %}{% endblock %}
 </head>
 <body>
 
@@ -82,6 +83,7 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+{% block js %}{% endblock %}
 
 </body>
 </html>

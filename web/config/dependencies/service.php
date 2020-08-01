@@ -7,7 +7,9 @@ use App\Service\Server\ServerService;
 use App\Service\Server\Whitelist\DummyWhitelistService;
 use App\Service\Server\Whitelist\FileWhitelistService;
 use App\Service\Server\Whitelist\WhitelistService;
+use App\Service\Server\World\McpeWorldRemover;
 use App\Service\Server\World\McpeWorldUploader;
+use App\Service\Server\World\WorldRemover;
 use App\Service\Server\World\WorldUploader;
 use App\Service\Zip\UnzipService;
 use App\Service\Zip\UnzipServiceInterface;
@@ -33,4 +35,8 @@ $container->set(UnzipServiceInterface::class, function (Container $container) {
 
 $container->set(WorldUploader::class, function (Container $container) {
     return $container->get(McpeWorldUploader::class);
+});
+
+$container->set(WorldRemover::class, function (Container $container) {
+    return $container->get(McpeWorldRemover::class);
 });

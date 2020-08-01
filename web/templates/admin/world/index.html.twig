@@ -11,4 +11,22 @@
         </div>
         <button class="btn btn-primary" type="submit">Upload</button>
     </form>
+
+    <hr>
+
+    <h3>Danger zone!</h3>
+
+    <form action="{{ path('admin.world.regenerate') }}" method="POST" id="regenerate-form">
+        <p>Current world will be removed and created new by properties settings.</p>
+        <p><b>Make backup before you regenerate the world!</b></p>
+        <button class="btn btn-danger" type="submit">Regenerate world</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).on("submit", "#regenerate-form", function () {
+            return confirm('Are you sure? Current world will be removed forever!');
+        });
+    </script>
 {% endblock %}
