@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Action\Admin\Properties;
 
-use App\Service\Server\Properties\PropertiesService;
+use Domain\Properties\Entity\PropertiesRepository;
 use Framework\Http\Psr7\ResponseFactory;
 use Framework\Template\TemplateRenderer;
 use Psr\Http\Message\ResponseInterface;
@@ -15,15 +15,15 @@ final class IndexAction implements RequestHandlerInterface
 {
     private ResponseFactory $response;
     private TemplateRenderer $template;
-    private PropertiesService $properties;
+    private PropertiesRepository $properties;
 
     /**
      * IndexAction constructor.
      * @param ResponseFactory $response
      * @param TemplateRenderer $template
-     * @param PropertiesService $properties
+     * @param PropertiesRepository $properties
      */
-    public function __construct(ResponseFactory $response, TemplateRenderer $template, PropertiesService $properties)
+    public function __construct(ResponseFactory $response, TemplateRenderer $template, PropertiesRepository $properties)
     {
         $this->response = $response;
         $this->template = $template;

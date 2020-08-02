@@ -2,9 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Server\Properties\Info;
+namespace Domain\Properties\UseCase\Edit;
 
-final class Properties
+use Domain\Properties\Entity\MainInfo;
+use Domain\Properties\Entity\MovementInfo;
+use Domain\Properties\Entity\OtherInfo;
+use Domain\Properties\Entity\PortInfo;
+use Domain\Properties\Entity\WorldInfo;
+
+final class Command
 {
     public MainInfo $mainInfo;
     public PortInfo $portInfo;
@@ -13,17 +19,14 @@ final class Properties
     public OtherInfo $otherInfo;
 
     /**
-     * Properties constructor.
+     * Command constructor.
      * @param MainInfo $mainInfo
      * @param PortInfo $portInfo
      * @param MovementInfo $movementInfo
      * @param WorldInfo $worldInfo
      * @param OtherInfo $otherInfo
      */
-    public function __construct(
-        MainInfo $mainInfo, PortInfo $portInfo, MovementInfo $movementInfo,
-        WorldInfo $worldInfo, OtherInfo $otherInfo
-    )
+    public function __construct(MainInfo $mainInfo, PortInfo $portInfo, MovementInfo $movementInfo, WorldInfo $worldInfo, OtherInfo $otherInfo)
     {
         $this->mainInfo = $mainInfo;
         $this->portInfo = $portInfo;

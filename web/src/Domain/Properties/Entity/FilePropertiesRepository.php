@@ -2,35 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Server\Properties;
+namespace Domain\Properties\Entity;
 
-use App\Service\Server\Properties\Info\MainInfo;
-use App\Service\Server\Properties\Info\MovementInfo;
-use App\Service\Server\Properties\Info\OtherInfo;
-use App\Service\Server\Properties\Info\PortInfo;
-use App\Service\Server\Properties\Info\Properties;
-use App\Service\Server\Properties\Info\WorldInfo;
-use Framework\Template\TemplateRenderer;
-
-final class FilePropertiesService implements PropertiesService
+final class FilePropertiesRepository implements PropertiesRepository
 {
-    private const DUMMY_PATH = '/app/src/App/Service/Server/Properties/dummy.txt';
-    private const PROPERTIES_PATH = '/app/data/server.properties';
-
-    private TemplateRenderer $template;
+    private string $propertiesPath;
 
     /**
-     * FilePropertiesService constructor.
-     * @param TemplateRenderer $template
+     * FilePropertiesRepository constructor.
+     * @param string $propertiesPath
      */
-    public function __construct(TemplateRenderer $template)
+    public function __construct(string $propertiesPath)
     {
-        $this->template = $template;
+        $this->propertiesPath = $propertiesPath;
     }
 
     public function get(): Properties
     {
-        $text = file_get_contents(self::PROPERTIES_PATH);
+        $text = file_get_contents($this->propertiesPath);
         $info = explode("\n", $text);
 
         return new Properties(
@@ -67,16 +56,6 @@ final class FilePropertiesService implements PropertiesService
                 trim(explode('=', $info[69])[1]) == 'true' ? true : false,
                 intval(explode('=', $info[73])[1])
             )
-        );
-    }
-
-    public function edit(Properties $properties): void
-    {
-        file_put_contents(
-            self::PROPERTIES_PATH,
-            $this->template->render('admin/properties/list', [
-                'properties' => $properties
-            ])
         );
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Server\Properties\Info;
+namespace Domain\Properties\Entity;
 
 use Webmozart\Assert\Assert;
 

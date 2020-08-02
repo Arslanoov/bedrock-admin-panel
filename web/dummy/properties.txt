@@ -14,7 +14,7 @@ allow-cheats=false
 # If true then cheats like commands can be used.
 # Allowed values: "true" or "false"
 
-max-players=20
+max-players=50
 # The maximum number of players that can play on the server.
 # Allowed values: Any positive integer
 

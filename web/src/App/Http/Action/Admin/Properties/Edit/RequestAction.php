@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Action\Admin\Properties\Edit;
 
-use App\Service\Server\Properties\Info\MainInfo;
-use App\Service\Server\Properties\Info\MovementInfo;
-use App\Service\Server\Properties\Info\OtherInfo;
-use App\Service\Server\Properties\Info\PortInfo;
-use App\Service\Server\Properties\Info\Properties;
-use App\Service\Server\Properties\Info\WorldInfo;
-use App\Service\Server\Properties\PropertiesService;
+use Domain\Properties\Entity\MainInfo;
+use Domain\Properties\Entity\MovementInfo;
+use Domain\Properties\Entity\OtherInfo;
+use Domain\Properties\Entity\PortInfo;
+use Domain\Properties\Entity\WorldInfo;
+use Domain\Properties\UseCase\Edit\Command;
+use Domain\Properties\UseCase\Edit\Handler;
 use Framework\Http\Psr7\ResponseFactory;
 use Framework\Http\Router\Router;
 use Psr\Http\Message\ResponseInterface;
@@ -19,19 +19,19 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 final class RequestAction implements RequestHandlerInterface
 {
-    private PropertiesService $properties;
+    private Handler $handler;
     private ResponseFactory $response;
     private Router $router;
 
     /**
      * RequestAction constructor.
-     * @param PropertiesService $properties
+     * @param Handler $handler
      * @param ResponseFactory $response
      * @param Router $router
      */
-    public function __construct(PropertiesService $properties, ResponseFactory $response, Router $router)
+    public function __construct(Handler $handler, ResponseFactory $response, Router $router)
     {
-        $this->properties = $properties;
+        $this->handler = $handler;
         $this->response = $response;
         $this->router = $router;
     }
@@ -40,8 +40,8 @@ final class RequestAction implements RequestHandlerInterface
     {
         $body = $request->getParsedBody();
 
-        $this->properties->edit(
-            new Properties(
+        $this->handler->handle(
+            new Command(
                 new MainInfo(
                     $body['server_name'] ?? '',
                     intval($body['max_players'] ?? ''),
