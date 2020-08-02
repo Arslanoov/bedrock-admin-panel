@@ -9,7 +9,7 @@
 
 {% block body %}
     <h2 class="text-center">Whitelist</h2>
-    <p class="text-center">Players count: <b>{{ players|length }}</b></p>
+    <p class="text-center">Players count: <b>{{ whitelist.countPlayers }}</b></p>
     <p class="text-center">
         <a href="{{ path('admin.whitelist.add.form') }}" class="btn btn-success">
             Add player
@@ -19,17 +19,20 @@
     <table class="table table-condensed table-bordered text-center">
         <thead>
             <tr>
-                <th>Player</th>
+                <th>Uuid</th>
+                <th>Name</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
+        {% set players = whitelist.players %}
             {% for player in players %}
                 <tr>
+                    <td>{{ player.uuid }}</td>
                     <td>{{ player.name }}</td>
                     <td>
-                        <form method="POST" action="{{ path('admin.whitelist.remove', {'name': player.name}) }}">
-                            <button type="submit" onsubmit="return confirm('Are you sure?')" class="btn btn-danger">
+                        <form method="POST" action="{{ path('admin.whitelist.remove', {'uuid': player.uuid, 'name': player.name}) }}" id="remove-form">
+                            <button type="submit" class="btn btn-danger">
                                 Remove
                             </button>
                         </form>
@@ -38,4 +41,12 @@
             {% endfor %}
         </tbody>
     </table>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).on("submit", "#remove-form", function () {
+            return confirm('Are you sure? Current player will be removed forever!');
+        });
+    </script>
 {% endblock %}

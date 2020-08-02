@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Action\Admin\Whitelist;
 
-use App\Service\Server\Whitelist\WhitelistService;
+use Domain\Whitelist\Entity\WhitelistRepository;
 use Framework\Http\Psr7\ResponseFactory;
 use Framework\Template\TemplateRenderer;
 use Psr\Http\Message\ResponseInterface;
@@ -13,17 +13,17 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 final class IndexAction implements RequestHandlerInterface
 {
-    private WhitelistService $whitelist;
+    private WhitelistRepository $whitelist;
     private ResponseFactory $response;
     private TemplateRenderer $template;
 
     /**
      * IndexAction constructor.
-     * @param WhitelistService $whitelist
+     * @param WhitelistRepository $whitelist
      * @param ResponseFactory $response
      * @param TemplateRenderer $template
      */
-    public function __construct(WhitelistService $whitelist, ResponseFactory $response, TemplateRenderer $template)
+    public function __construct(WhitelistRepository $whitelist, ResponseFactory $response, TemplateRenderer $template)
     {
         $this->whitelist = $whitelist;
         $this->response = $response;
@@ -32,11 +32,11 @@ final class IndexAction implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $players = $this->whitelist->getList();
+        $whitelist = $this->whitelist->get();
 
         return $this->response->html(
             $this->template->render('admin/whitelist/index', [
-                'players' => $players
+                'whitelist' => $whitelist
             ])
         );
     }
