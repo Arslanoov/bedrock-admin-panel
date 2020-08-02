@@ -31,8 +31,7 @@ final class McpeWorldTimestampBackupMaker implements WorldBackupMaker
         if (!file_exists($worldPath) or !is_dir($worldPath)) {
             throw new RuntimeException('World does not exist.');
         }
-
-        if (!file_exists($path = $this->backupsPath . '/' . date('d-m-Y') . '/' . date('H.i.s'))) {
+        if (!file_exists($path = $this->backupsPath . '/' . date('d-m-Y') . '.' . date('H-i-s'))) {
             mkdir($path, 0777, true);
         }
 

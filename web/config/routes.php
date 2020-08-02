@@ -31,8 +31,12 @@ $app->post('admin.info.start', '/admin/server/start', Action\Admin\Info\StartAct
 $app->post('admin.info.stop', '/admin/info/stop', Action\Admin\Info\StopAction::class);
 $app->post('admin.info.restart', '/admin/info/restart', Action\Admin\Info\RestartAction::class);
 
-## World and backups
+## World
 $app->get('admin.world.index', '/admin/world', Action\Admin\World\IndexAction::class);
 $app->post('admin.world.upload', '/admin/world/upload', Action\Admin\World\UploadAction::class);
 $app->post('admin.world.regenerate', '/admin/world/regenerate', Action\Admin\World\RegenerateAction::class);
+
+## Backups
 $app->post('admin.world.backup', '/admin/world/backup', Action\Admin\World\BackupAction::class);
+$app->post('admin.world.backup.download', '/admin/world/backup/download', Action\Admin\World\Backup\DownloadAction::class);
+$app->post('admin.world.backup.remove', '/admin/world/backup/remove', Action\Admin\World\Backup\RemoveAction::class);
