@@ -33,7 +33,9 @@ final class UriEqualsExtension extends AbstractExtension
     {
         /** @var ServerRequestInterface $request */
         $request = $this->container->get(ServerRequestInterface::class);
-        $uri = (string) $request->getUri();
+        if ($port = $request->getUri()->getPort()) {
+            $uri = explode(':' . $port, (string) $request->getUri())[1];
+        }
         return $inputUri === $uri;
     }
 }
