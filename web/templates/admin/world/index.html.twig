@@ -18,44 +18,6 @@
 
     <hr>
 
-    <h3>Backups</h3>
-    <form action="{{ path('admin.world.backup') }}" method="POST">
-        <button class="btn btn-primary" type="submit">Make backup</button>
-    </form>
-
-    <table class="table table-condensed table-bordered">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Size</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for backup in backups %}
-                <tr>
-                    <td>{{ backup.name }}</td>
-                    <td>{{ backup.size }} KB</td>
-                    <td>
-                        <form action="{{ path('admin.world.backup.download') }}" method="POST">
-                            <input type="hidden" value="{{ backup.name }}" name="name">
-                            <button type="submit" class="btn btn-success">Download</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{ path('admin.world.backup.remove') }}" method="POST">
-                            <input type="hidden" value="{{ backup.name }}" name="name">
-                            <button type="submit" class="btn btn-danger">Remove</button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <hr>
-
     <h3>Danger zone!</h3>
 
     <form action="{{ path('admin.world.regenerate') }}" method="POST" id="regenerate-form">

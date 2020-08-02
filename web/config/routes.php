@@ -37,6 +37,7 @@ $app->post('admin.world.upload', '/admin/world/upload', Action\Admin\World\Uploa
 $app->post('admin.world.regenerate', '/admin/world/regenerate', Action\Admin\World\RegenerateAction::class);
 
 ## Backups
-$app->post('admin.world.backup', '/admin/world/backup', Action\Admin\World\BackupAction::class);
-$app->post('admin.world.backup.download', '/admin/world/backup/download', Action\Admin\World\Backup\DownloadAction::class);
-$app->post('admin.world.backup.remove', '/admin/world/backup/remove', Action\Admin\World\Backup\RemoveAction::class);
+$app->get('admin.backup.index', '/admin/backup', Action\Admin\Backup\IndexAction::class);
+$app->post('admin.backup', '/admin/backup', Action\Admin\Backup\BackupAction::class);
+$app->post('admin.backup.download', '/admin/backup/download', Action\Admin\Backup\DownloadAction::class);
+$app->post('admin.backup.remove', '/admin/backup/remove', Action\Admin\Backup\RemoveAction::class);

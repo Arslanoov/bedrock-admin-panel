@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Action\Admin\World\Backup;
+namespace App\Http\Action\Admin\Backup;
 
 use App\Service\Zip\ZipServiceInterface;
 use Framework\Http\Psr7\ResponseFactory;

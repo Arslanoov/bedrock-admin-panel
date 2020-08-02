@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Action\Admin\World\Backup;
+namespace App\Http\Action\Admin\Backup;
 
 use App\Service\Server\World\WorldBackupRemover;
 use Framework\Http\Psr7\ResponseFactory;
@@ -36,7 +36,7 @@ final class RemoveAction implements RequestHandlerInterface
         $this->backup->remove($name);
 
         return $this->response->redirect(
-            $this->router->generate('admin.world.index', [])
+            $this->router->generate('admin.backup.index', [])
         );
     }
 }
