@@ -28,9 +28,6 @@ require 'vendor/autoload.php';
     $request = $container->get(ServerRequestInterface::class);
     $response = $app->handle($request);
 
-    $response =
-        $response->withHeader('X-Developer', 'Arslanoov');
-
     $runner = new Runner();
     $runner->run($response);
 })();
