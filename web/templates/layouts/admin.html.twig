@@ -66,8 +66,8 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item {{ uriEquals(path('admin.logs.index')) ? 'active' : ''}}">
+                        <a class="nav-link" href="{{ path('admin.logs.index') }}">
                             Logs
                         </a>
                     </li>

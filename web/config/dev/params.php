@@ -12,5 +12,8 @@ return [
         'path' => '/app/dummy/worlds',
         'name' => 'level',
         'backupsPath' => '/app/dummy/backups'
+    ],
+    'logs' => [
+        'url' => '/app/dummy/logs.txt'
     ]
 ];

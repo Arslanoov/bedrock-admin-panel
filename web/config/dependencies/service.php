@@ -3,6 +3,8 @@
 use App\Service\ChangeRightServiceInterface;
 use App\Service\FileService;
 use App\Service\FileServiceInterface;
+use App\Service\Logs\FileLogsService;
+use App\Service\Logs\LogsService;
 use App\Service\Server\McpeServerService;
 use App\Service\Server\ServerService;
 use App\Service\Server\World\McpeWorldBackupRemover;
@@ -81,5 +83,11 @@ $container->set(ZipServiceInterface::class, function (Container $container) {
 $container->set(WorldBackupRemover::class, function (Container $container) {
     return new McpeWorldBackupRemover(
         $container->get('config')['world']['backupsPath']
+    );
+});
+
+$container->set(LogsService::class, function (Container $container) {
+    return new FileLogsService(
+        $container->get('config')['logs']['url']
     );
 });

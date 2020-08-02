@@ -1,0 +1,9 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block body %}
+    {% set i = 0 %}
+        {% for log in logs %}
+            <pre>{{ i }}: {{ log }}</pre>
+        {% set i = i + 1 %}
+    {% endfor %}
+{% endblock %}

@@ -41,3 +41,6 @@ $app->get('admin.backup.index', '/admin/backup', Action\Admin\Backup\IndexAction
 $app->post('admin.backup', '/admin/backup', Action\Admin\Backup\BackupAction::class);
 $app->post('admin.backup.download', '/admin/backup/download', Action\Admin\Backup\DownloadAction::class);
 $app->post('admin.backup.remove', '/admin/backup/remove', Action\Admin\Backup\RemoveAction::class);
+
+## Logs
+$app->get('admin.logs.index', '/admin/logs', Action\Admin\Logs\IndexAction::class);
