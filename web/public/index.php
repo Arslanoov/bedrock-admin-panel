@@ -11,6 +11,11 @@ require 'vendor/autoload.php';
 
 (function () {
     define('ENV', 'dev');
+    if (ENV === 'dev') {
+        ini_set('error_reporting', '32767');
+        ini_set('display_errors', '1');
+        ini_set('display_startup_errors', '1');
+    }
 
     $container = require 'config/container.php';
 

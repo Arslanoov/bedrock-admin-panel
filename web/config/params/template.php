@@ -15,6 +15,11 @@ return [
                 UriExtension::class,
                 UriEqualsExtension::class
             ]
+        ],
+        'errors' => [
+            400 => 'errors/400',
+            404 => 'errors/404',
+            500 => 'errors/500'
         ]
     ]
 ];
