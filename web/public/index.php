@@ -10,6 +10,8 @@ chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
 (function () {
+    define('ENV', 'dev');
+
     $container = require 'config/container.php';
 
     /** @var Application $app */

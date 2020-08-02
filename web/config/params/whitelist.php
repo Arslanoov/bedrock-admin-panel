@@ -2,6 +2,6 @@
 
 return [
     'whitelist' => [
-        'pathToFile' => '/app/dummy/whitelist.json'
+        'pathToFile' => '/app/data/whitelist.json'
     ]
 ];

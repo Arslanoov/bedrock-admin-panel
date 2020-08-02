@@ -1,17 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 use Furious\Container\Container;
-use Psr\Container\ContainerInterface;
 
 $container = new Container();
 
-$config = [];
-$configFiles = glob(__DIR__ . '/params/{*}.php', GLOB_BRACE);
-foreach ($configFiles as $configFile) {
-    $config += require $configFile;
+function getConfig(): array
+{
+    $config = [];
+    $files = glob(__DIR__ . '/params/{*}.php', GLOB_BRACE);
+
+    foreach ($files as $file) {
+        $config += require $file;
+    }
+
+    if (ENV === 'dev') {
+        $config = array_replace($config, require __DIR__ . '/dev/params.php');
+    }
+
+    return $config;
 }
 
-$container->set('config', $config);
+$container->set('config', getConfig());
+
 array_map(
     function ($file) use ($container) {
         return require $file;
@@ -19,8 +31,8 @@ array_map(
     glob(__DIR__ . '/dependencies/{*}.php', GLOB_BRACE)
 );
 
-$container->set(ContainerInterface::class, function (Container $container) {
-    return $container;
-});
+if (ENV === 'dev') {
+    require __DIR__ . '/dev/dependencies.php';
+}
 
 return $container;
