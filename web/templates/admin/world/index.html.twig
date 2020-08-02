@@ -4,6 +4,10 @@
     <h2>Upload new world</h2>
     <p>World max size: 1024m</p>
 
+    <p>
+        <b>In zip archive must be world folder with the same name as zip archive</b>
+    </p>
+
     <form action="{{ path('admin.world.upload') }}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="file">World folder ZIP</label>

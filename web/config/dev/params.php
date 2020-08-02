@@ -7,5 +7,9 @@ return [
     ],
     'properties' => [
         'pathToFile' => '/app/dummy/properties.txt'
+    ],
+    'world' => [
+        'path' => '/app/dummy/worlds',
+        'name' => 'level'
     ]
 ];
