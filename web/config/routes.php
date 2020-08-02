@@ -35,3 +35,4 @@ $app->post('admin.info.restart', '/admin/info/restart', Action\Admin\Info\Restar
 $app->get('admin.world.index', '/admin/world', Action\Admin\World\IndexAction::class);
 $app->post('admin.world.upload', '/admin/world/upload', Action\Admin\World\UploadAction::class);
 $app->post('admin.world.regenerate', '/admin/world/regenerate', Action\Admin\World\RegenerateAction::class);
+$app->post('admin.world.backup', '/admin/world/backup', Action\Admin\World\BackupAction::class);

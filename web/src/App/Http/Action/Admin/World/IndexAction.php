@@ -28,7 +28,6 @@ final class IndexAction implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        throw new \InvalidArgumentException('ss');
         return $this->response->html(
             $this->template->render('admin/world/index')
         );

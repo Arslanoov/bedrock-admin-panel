@@ -18,6 +18,13 @@
 
     <hr>
 
+    <h3>Backups</h3>
+    <form action="{{ path('admin.world.backup') }}" method="POST">
+        <button class="btn btn-primary" type="submit">Make backup</button>
+    </form>
+
+    <hr>
+
     <h3>Danger zone!</h3>
 
     <form action="{{ path('admin.world.regenerate') }}" method="POST" id="regenerate-form">

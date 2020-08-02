@@ -10,6 +10,7 @@ return [
     ],
     'world' => [
         'path' => '/app/dummy/worlds',
-        'name' => 'level'
+        'name' => 'level',
+        'backupsPath' => '/app/dummy/backups'
     ]
 ];
