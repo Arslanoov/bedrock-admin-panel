@@ -41,5 +41,10 @@ $container->set(WorldUploader::class, function (Container $container) {
 });
 
 $container->set(WorldRemover::class, function (Container $container) {
-    return $container->get(McpeWorldRemover::class);
+    return new McpeWorldRemover(
+        $container->get(ChangeRightServiceInterface::class),
+        $container->get('config')['server']['url'],
+        $container->get('config')['world']['path'],
+        $container->get('config')['world']['name']
+    );
 });
