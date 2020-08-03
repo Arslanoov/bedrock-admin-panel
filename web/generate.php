@@ -16,5 +16,5 @@ function random_str(
 }
 
 $key = random_str();
-echo 'Done! Link to login: {your site}:8080/admin?key=' . $key;
+echo 'Done! Link to login: {your site}:8080/admin?key=' . $key . "\n";
 file_put_contents('.key', $key);

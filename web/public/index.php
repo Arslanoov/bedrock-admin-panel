@@ -10,7 +10,7 @@ chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
 (function () {
-    define('ENV', 'dev');
+    define('ENV', 'prod');
 
     if (ENV === 'dev') {
         ini_set('error_reporting', '32767');

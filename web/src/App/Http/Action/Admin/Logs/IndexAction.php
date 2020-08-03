@@ -32,11 +32,13 @@ final class IndexAction implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $logs = $this->logs->get();
+        $limit = intval($request->getQueryParams()['limit'] ?? 100);
+        $logs = $this->logs->get($limit);
 
         return $this->response->html(
             $this->template->render('admin/logs/index', [
-                'logs' => $logs
+                'logs' => $logs,
+                'limit' => $limit
             ])
         );
     }

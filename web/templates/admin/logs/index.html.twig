@@ -1,6 +1,19 @@
 {% extends 'layouts/admin.html.twig' %}
 
+{% block css %}
+    <style>
+        .form-inline button {
+            margin-left: 10px;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
+    <form action="?" method="GET" class="form-inline">
+        <input type="number" name="limit" min="0" value="{{ limit }}" class="form-control col-md-3 col-sm-6 mb-2">
+        <button type="submit" class="btn btn-primary mb-2">Get logs</button>
+    </form>
+
     {% set i = 0 %}
         {% for log in logs %}
             <pre>{{ i }}: {{ log }}</pre>

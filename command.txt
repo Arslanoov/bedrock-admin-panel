@@ -13,11 +13,14 @@ mkdir backups && chmod -R 777 backups &&
 sudo groupadd docker &&
 sudo gpasswd -a ${USER} docker &&
 sudo service docker restart &&
+chmod -R 777 var &&
 
 cd ../ &&
-nohup php -S 0.0.0.0:57152 -t command/ > /dev/null 2>&1 &
 chmod -R 777 /opt/mcpe-data/worlds &&
+mkdir /opt/mcpe-data/backups &&
+chmod -R 777 /opt/mcpe-data/backups &&
 
 // sudo visudo
 
+nohup php -S 0.0.0.0:57152 -t command/ > /dev/null 2>&1 &
 && cd /bedrock-admin-panel/web && php generate.php
