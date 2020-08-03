@@ -38,10 +38,15 @@ final class TemplateResponseGenerator implements ResponseGenerator
             $view = $this->views[500];
         }
 
+        $message = '';
+        if ($e->getCode() === 400) {
+            $message = $e->getMessage();
+        }
+
         $response
             ->getBody()
             ->write(
-                $this->template->render($view)
+                $this->template->render($view, ['message' => $message])
             )
         ;
 

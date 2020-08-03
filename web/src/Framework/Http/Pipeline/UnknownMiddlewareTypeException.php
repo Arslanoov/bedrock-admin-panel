@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Framework\Http\Pipeline;
 
-use InvalidArgumentException;
+use Framework\Http\Exception\InvalidArgumentException;
 
-final class UnknownMiddlewareTypeException extends InvalidArgumentException
+final class UnknownMiddlewareTypeException extends Framework\Http\Exception\InvalidArgumentException
 {
 
 }

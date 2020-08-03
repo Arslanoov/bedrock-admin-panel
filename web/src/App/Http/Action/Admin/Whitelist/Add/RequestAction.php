@@ -9,7 +9,7 @@ use Domain\Whitelist\UseCase\AddPlayer\Handler;
 use Framework\Http\Psr7\ResponseFactory;
 use Framework\Http\Router\Router;
 use Framework\Template\TemplateRenderer;
-use InvalidArgumentException;
+use Framework\Http\Exception\InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

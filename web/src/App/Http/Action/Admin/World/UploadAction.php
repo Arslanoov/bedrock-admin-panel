@@ -12,7 +12,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use InvalidArgumentException;
+use Framework\Http\Exception\InvalidArgumentException;
 
 final class UploadAction implements RequestHandlerInterface
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use InvalidArgumentException;
+use Framework\Http\Exception\InvalidArgumentException;
 
 final class FileService implements FileServiceInterface
 {
