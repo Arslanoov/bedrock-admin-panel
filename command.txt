@@ -31,6 +31,9 @@ sudo apt-get install php7.4 -y &&
 cd /bedrock-admin-panel/web &&
 chmod -R 777 var &&
 docker-compose run --rm php-cli chmod -R 777 /app/data &&
+cd .. &&
+docker-compose up -d &&
+cd web &&
 php generate.php
 
 
