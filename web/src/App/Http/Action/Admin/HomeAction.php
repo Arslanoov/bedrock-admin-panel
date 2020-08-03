@@ -28,7 +28,6 @@ final class HomeAction implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        throw new \Framework\Http\Exception\InvalidArgumentException('Lol');
         return $this->response->html(
             $this->template->render('admin/home')
         );
