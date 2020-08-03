@@ -22,7 +22,8 @@
     "webmozart/assert": "^1.9",
     "laminas/laminas-diactoros": "^2.3",
     "ext-zip": "*",
-    "filp/whoops": "^2.7"
+    "filp/whoops": "^2.7",
+    "ext-http": "*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master"

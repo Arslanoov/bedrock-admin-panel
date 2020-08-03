@@ -11,4 +11,5 @@ $router = $app->getRouter();
 $app->pipe(Middleware\ProfilerMiddleware::class);
 $app->pipe(new FrameworkMiddleware\RouteMiddleware($router));
 $app->pipe(Middleware\ErrorHandler\ErrorHandler::class);
+$app->pipe('admin', Middleware\AuthMiddleware::class);
 $app->pipe(FrameworkMiddleware\DispatchMiddleware::class);

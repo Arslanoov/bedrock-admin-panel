@@ -15,5 +15,9 @@ return [
     ],
     'logs' => [
         'url' => '/app/dummy/logs.txt'
+    ],
+    'server' => [
+        'url' => 'http://localhost:57152',
+        'key' => file_get_contents(__DIR__ . '/../../.key')
     ]
 ];

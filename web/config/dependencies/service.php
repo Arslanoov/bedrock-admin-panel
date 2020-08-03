@@ -25,7 +25,10 @@ use Furious\Container\Container;
 /** @var Container $container */
 
 $container->set(ServerService::class, function (Container $container) {
-    return $container->get(McpeServerService::class);
+    return new McpeServerService(
+        $container->get('config')['server']['url'],
+        $container->get('config')['server']['key']
+    );
 });
 
 $container->set(ChangeRightServiceInterface::class, function (Container $container) {
