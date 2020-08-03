@@ -21,6 +21,7 @@ final class FileWhitelistEditor implements WhitelistEditor
 
     public function edit(Whitelist $whitelist): void
     {
-        file_put_contents($this->pathToFile, json_encode($whitelist->getPlayersArray()));
+        $players = $whitelist->getPlayersArray();
+        file_put_contents($this->pathToFile, json_encode($players));
     }
 }

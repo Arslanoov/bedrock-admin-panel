@@ -15,6 +15,8 @@ $app->get('admin.whitelist.index', '/admin/whitelist', Action\Admin\Whitelist\In
 $app->get('admin.whitelist.add.form', '/admin/whitelist/add-player/form', Action\Admin\Whitelist\Add\FormAction::class);
 $app->post('admin.whitelist.add.request', '/admin/whitelist/add-player/request', Action\Admin\Whitelist\Add\RequestAction::class);
 $app->post('admin.whitelist.remove', '/admin/whitelist/remove-player/{uuid}/{name}', Action\Admin\Whitelist\RemoveAction::class);
+$app->get('admin.whitelist.edit.form', '/admin/whitelist/edit-player/form/{uuid}', Action\Admin\Whitelist\Edit\FormAction::class);
+$app->post('admin.whitelist.edit.request', '/admin/whitelist/edit-player/request/{uuid}', Action\Admin\Whitelist\Edit\RequestAction::class);
 
 ## Properties
 $app->get('admin.properties.index', '/admin/properties', Action\Admin\Properties\IndexAction::class);

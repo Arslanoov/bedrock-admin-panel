@@ -1,5 +1,6 @@
 <?php
 
+use Domain\Permission\Entity\PermissionsRepository;
 use Domain\Whitelist\Entity\FileWhitelistRepository;
 use Domain\Whitelist\Entity\WhitelistRepository;
 use Domain\Whitelist\Service\FileWhitelistEditor;
@@ -16,6 +17,7 @@ $container->set(WhitelistEditor::class, function (Container $container) {
 
 $container->set(WhitelistRepository::class, function (Container $container) {
     return new FileWhitelistRepository(
+        $container->get(PermissionsRepository::class),
         $container->get('config')['whitelist']['pathToFile']
     );
 });

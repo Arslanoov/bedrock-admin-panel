@@ -39,14 +39,12 @@
                     <td>{{ player.uuid }}</td>
                     <td>{{ player.name }}</td>
                     <td>{{ player.xuid == '' ? 'Empty' : player.xuid }}</td>
-                    <td>{{ player.role }}</td>
+                    <td>{{ player.role ?? 'Default' }}</td>
                     <td>{{ player.ignoresPlayerLimit ? 'True' : 'False' }}</td>
                     <td>
-                        <form method="POST" action="" id="edit-form">
-                            <button type="submit" class="btn btn-primary">
-                                Edit
-                            </button>
-                        </form>
+                        <a href="{{ path('admin.whitelist.edit.form', {'uuid': player.uuid}) }}" class="btn btn-primary">
+                            Edit
+                        </a>
                     </td>
                     <td>
                         <form method="POST" action="{{ path('admin.whitelist.remove', {'uuid': player.uuid, 'name': player.name}) }}" id="remove-form">

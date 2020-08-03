@@ -13,6 +13,9 @@ return [
         'name' => 'level',
         'backupsPath' => '/app/dummy/backups'
     ],
+    'permission' => [
+        'path' => '/app/dummy/permissions.json'
+    ],
     'logs' => [
         'url' => '/app/dummy/logs.txt'
     ],

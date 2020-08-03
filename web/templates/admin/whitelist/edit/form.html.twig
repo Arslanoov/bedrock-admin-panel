@@ -1,0 +1,37 @@
+{% extends 'layouts/admin.html.twig' %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('admin.home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('admin.whitelist.index') }}">Whitelist</a></li>
+        <li class="breadcrumb-item active"><a href="#">Edit player</a></li>
+    </ol>
+{% endblock %}
+
+{% block body %}
+    <form action="{{ path('admin.whitelist.edit.request', {'uuid': player.uuid}) }}" method="POST">
+        <div class="form-group">
+            <label for="role"><b>Role</b></label>
+            <select name="role" id="role" class="form-control col-sm-6">
+                <option value="default" {{ player.permission == 'default' ? 'selected' : '' }}>Default</option>
+                <option value="visitor" {{ player.permission == 'visitor' ? 'selected' : '' }}>Visitor</option>
+                <option value="member" {{ player.permission == 'member' ? 'selected' : '' }}>Member</option>
+                <option value="operator" {{ player.permission == 'operator' ? 'selected' : '' }}>Operator</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ignoresPlayerLimit"><b>Ignore player limits</b></label>
+            <select name="ignores_player_limit" id="ignoresPlayerLimit" class="form-control col-sm-6">
+                <option value="false" {{ player.ignoresPlayerLimit ? '' : 'selected' }}>False</option>
+                <option value="true" {{ player.ignoresPlayerLimit ? 'selected' : '' }}>True</option>
+            </select>
+        </div>
+
+        <p>
+            Uuid will be generated automatically
+        </p>
+
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+{% endblock %}

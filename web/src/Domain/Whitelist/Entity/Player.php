@@ -58,6 +58,16 @@ final class Player
         return $this->role;
     }
 
+    public function changeRole(Role $role): void
+    {
+        $this->role = $role;
+    }
+
+    public function resetRole(): void
+    {
+        $this->role = Role::default();
+    }
+
     /**
      * @return string|null
      */
@@ -74,13 +84,20 @@ final class Player
         return $this->ignoresPlayerLimit;
     }
 
+    public function edit(Role $role, bool $ignoresPlayerLimit): void
+    {
+        $this->role = $role;
+        $this->ignoresPlayerLimit = $ignoresPlayerLimit;
+    }
+
     public function asArray(): array
     {
         return [
             'name' => $this->name,
             'uuid' => $this->uuid,
             'ignoresPlayerLimit' => $this->ignoresPlayerLimit ? 'true' : 'false',
-            'xuid' => $this->xuid ?: ''
+            'xuid' => $this->xuid ?: '',
+            'permission' => $this->role->getValue()
         ];
     }
 

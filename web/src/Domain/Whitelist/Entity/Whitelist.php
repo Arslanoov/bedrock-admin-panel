@@ -50,6 +50,22 @@ final class Whitelist
         $this->players[] = $player;
     }
 
+    public function editPlayerByUuid(
+        string $uuid,
+        Role $role,
+        bool $ignoresPlayerLimit
+    ): void
+    {
+        foreach ($this->players as $whitelistPlayer) {
+            if ($whitelistPlayer->getUuid() === $uuid) {
+                $whitelistPlayer->edit(
+                    $role,
+                    $ignoresPlayerLimit
+                );
+            }
+        }
+    }
+
     public function removePlayer(Player $player): void
     {
         foreach ($this->players as $key => $whitelistPlayer) {
