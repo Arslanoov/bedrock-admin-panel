@@ -3,7 +3,7 @@
 return [
     'world' => [
         'path' => '/app/data/worlds',
-        'name' => 'level',
+        'name' => 'Bedrock level',
         'backupsPath' => '/app/data/backups'
     ]
 ];

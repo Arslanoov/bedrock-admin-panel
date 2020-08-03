@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Server\World;
 
-use RuntimeException;
+use Framework\Http\Exception\InvalidArgumentException;
 
 final class McpeWorldTimestampBackupMaker implements WorldBackupMaker
 {
@@ -29,7 +29,7 @@ final class McpeWorldTimestampBackupMaker implements WorldBackupMaker
     {
         $worldPath = $this->worldsPath . '/' . $this->worldName;
         if (!file_exists($worldPath) or !is_dir($worldPath)) {
-            throw new RuntimeException('World does not exist.');
+            throw new InvalidArgumentException('World does not exist.');
         }
         if (!file_exists($path = $this->backupsPath . '/' . date('d-m-Y') . '.' . date('H-i-s'))) {
             mkdir($path, 0777, true);

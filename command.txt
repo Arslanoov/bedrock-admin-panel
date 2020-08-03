@@ -4,7 +4,6 @@ sudo apt -y install software-properties-common &&
 sudo add-apt-repository ppa:ondrej/php -y &&
 sudo apt-get update -y &&
 
-## token
 cd / &&
 git clone https://github.com/Arslanoov/bedrock-admin-panel.git &&
 cd /bedrock-admin-panel &&
@@ -23,14 +22,17 @@ sudo groupadd docker &&
 sudo gpasswd -a ${USER} docker &&
 sudo service docker restart &&
 
-echo 'www-data ALL=NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
+echo 'www-data ALL=NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo &&
 
-### your ip
 sudo sh -c "echo '80.87.202.253' >> /bedrock-admin-panel/web/server.ip" &&
 
 sudo apt-get install php7.4 -y &&
 
 cd /bedrock-admin-panel/web &&
 chmod -R 777 var &&
-php generate.php &&
+docker-compose run --rm php-cli chmod -R 777 /app/data &&
+php generate.php
+
+
+
 nohup php -S 0.0.0.0:57152 -t command/ > /dev/null 2>&1 &

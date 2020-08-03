@@ -36,7 +36,7 @@ final class FileService implements FileServiceInterface
             }
         }
 
-        return array_slice($backupFiles, 2);
+        return array_reverse(array_slice($backupFiles, 2));
     }
 
     private function getDirectorySize(string $path): int
