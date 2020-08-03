@@ -94,3 +94,9 @@ $container->set(LogsService::class, function (Container $container) {
         $container->get('config')['logs']['url']
     );
 });
+
+$container->set(ChangeRightServiceInterface::class, function (Container $container) {
+    return new WorldsChangeRightService(
+        $container->get('config')['server']['key']
+    );
+});

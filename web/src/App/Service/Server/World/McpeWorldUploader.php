@@ -29,7 +29,7 @@ final class McpeWorldUploader implements WorldUploader
     public function upload(UploadedFileInterface $world): string
     {
         $this->service->changeRight($this->url);
-        $path = $this->worldsPath . '/' . $world->getClientFilename() ;
+        $path = $this->worldsPath . '/' . $world->getClientFilename();
         $world->moveTo($path);
         return $path;
     }

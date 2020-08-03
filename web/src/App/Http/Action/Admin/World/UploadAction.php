@@ -40,7 +40,10 @@ final class UploadAction implements RequestHandlerInterface
     {
         /** @var UploadedFileInterface $zip */
         $zip = $request->getUploadedFiles()['file'];
-        if ($zip->getClientMediaType() !== 'application/x-zip-compressed') {
+        if (!in_array($zip->getClientMediaType(), [
+            'application/zip',
+            'application/x-zip-compressed'
+        ])) {
             throw new InvalidArgumentException('Uploaded file must be in zip format');
         }
 

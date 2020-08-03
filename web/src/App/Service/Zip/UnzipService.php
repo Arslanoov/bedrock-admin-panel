@@ -55,6 +55,18 @@ final class UnzipService implements UnzipServiceInterface
         $oldZipName = explode('/', $pathWithoutZipExt)[4];
 
         unlink($zipFilePath);
-        rename($this->worldsPath . '/' . $oldZipName, $this->worldsPath . '/' . $this->worldName);
+        if (file_exists($newPath = $this->worldsPath . '/' . $this->worldName)) {
+            $this->removeDirectory($newPath);
+        }
+        rename($this->worldsPath . '/' . $oldZipName, $newPath);
+    }
+
+    private function removeDirectory(string $dir): void
+    {
+        $files = glob($dir . '/*');
+        foreach ($files as $file) {
+            is_dir($file) ? $this->removeDirectory($file) : unlink($file);
+        }
+        rmdir($dir);
     }
 }
