@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Whitelist\UseCase\RemovePlayer;
 
 use Domain\Whitelist\Entity\Player;
+use Domain\Whitelist\Entity\Role;
 use Domain\Whitelist\Entity\WhitelistRepository;
 use Domain\Whitelist\Service\WhitelistEditor;
 
@@ -30,7 +31,10 @@ final class Handler
 
         $whitelist->removePlayer(new Player(
             $command->name,
-            $command->uuid
+            $command->uuid,
+            null,
+            Role::default(),
+            false
         ));
 
         $this->editor->edit($whitelist);

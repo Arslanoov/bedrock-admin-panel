@@ -11,8 +11,18 @@
 {% block body %}
     <form action="{{ path('admin.whitelist.add.request') }}" method="POST">
 
-        <label for="name"><b>Player name</b></label>
-        <input type="text" name="name" id="name" class="form-control col-sm-6">
+        <div class="form-group">
+            <label for="name"><b>Player name</b></label>
+            <input type="text" name="name" id="name" class="form-control col-sm-6">
+        </div>
+
+        <div class="form-group">
+            <label for="ignoresPlayerLimit"><b>Ignore player limits</b></label>
+            <select name="ignores_player_limit" id="ignoresPlayerLimit" class="form-control col-sm-6">
+                <option value="false">False</option>
+                <option value="true">True</option>
+            </select>
+        </div>
 
         <p>
             Uuid will be generated automatically

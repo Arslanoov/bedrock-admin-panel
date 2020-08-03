@@ -18,7 +18,11 @@ final class Whitelist
     public function __construct(array $players)
     {
         foreach ($players as $player) {
-            $this->addPlayer(new Player( $player['name'], $player['uuid']));
+            $this->addPlayer(new Player(
+                $player['name'], $player['uuid'],
+                $player['xuid'] ?? null, new Role($player['role'] ?? 'default'),
+                $player['ignoresPlayerLimit'] === 'true' ? true : false
+            ));
         }
     }
 

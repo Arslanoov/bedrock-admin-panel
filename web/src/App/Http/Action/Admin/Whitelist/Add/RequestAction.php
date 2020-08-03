@@ -41,9 +41,11 @@ final class RequestAction implements RequestHandlerInterface
         if (!$name = $request->getParsedBody()['name']) {
             throw new InvalidArgumentException('Empty player name.');
         }
+        $ignoresPlayerLimit = $request->getParsedBody()['ignores_player_limit'] === 'true' ? true : false;
 
         $this->handler->handle(new Command(
-            $name
+            $name,
+            $ignoresPlayerLimit
         ));
 
         return $this->response->redirect(

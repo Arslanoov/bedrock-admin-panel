@@ -15,21 +15,39 @@
             Add player
         </a>
     </p>
+    <p class="text-center">
+        You can change player role (permission) only after he went to the server
+    </p>
 
-    <table class="table table-condensed table-bordered text-center">
-        <thead>
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered">
+            <thead>
             <tr>
                 <th>Uuid</th>
                 <th>Name</th>
+                <th>Xuid</th>
+                <th>Role</th>
+                <th>Ignore player limits</th>
+                <th></th>
                 <th></th>
             </tr>
-        </thead>
-        <tbody>
-        {% set players = whitelist.players %}
+            </thead>
+            <tbody>
+            {% set players = whitelist.players %}
             {% for player in players %}
                 <tr>
                     <td>{{ player.uuid }}</td>
                     <td>{{ player.name }}</td>
+                    <td>{{ player.xuid == '' ? 'Empty' : player.xuid }}</td>
+                    <td>{{ player.role }}</td>
+                    <td>{{ player.ignoresPlayerLimit ? 'True' : 'False' }}</td>
+                    <td>
+                        <form method="POST" action="" id="edit-form">
+                            <button type="submit" class="btn btn-primary">
+                                Edit
+                            </button>
+                        </form>
+                    </td>
                     <td>
                         <form method="POST" action="{{ path('admin.whitelist.remove', {'uuid': player.uuid, 'name': player.name}) }}" id="remove-form">
                             <button type="submit" class="btn btn-danger">
@@ -39,8 +57,9 @@
                     </td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 
 {% block js %}
