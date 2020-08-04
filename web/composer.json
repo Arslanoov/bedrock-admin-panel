@@ -13,17 +13,13 @@
     "furious/psr15": "^1.0",
     "furious/container": "^1.0",
     "furious/http-runner": "^0.1",
-    "cycle/orm": "^1.2",
     "twig/twig": "^3.0",
-    "cycle/annotated": "^2.0",
-    "cycle/migrations": "^1.0",
     "symfony/console": "^5.1",
     "ramsey/uuid": "^4.1",
     "webmozart/assert": "^1.9",
     "laminas/laminas-diactoros": "^2.3",
     "ext-zip": "*",
-    "filp/whoops": "^2.7",
-    "ext-http": "*"
+    "filp/whoops": "^2.7"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master"
@@ -38,5 +34,8 @@
   },
   "scripts": {
     "serve": "php -S 0.0.0.0:8093 -t public"
+  },
+  "config": {
+    "sort-packages": true
   }
 }
