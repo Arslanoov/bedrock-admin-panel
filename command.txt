@@ -9,6 +9,10 @@ git clone https://github.com/Arslanoov/bedrock-admin-panel.git &&
 cd /bedrock-admin-panel &&
 
 apt install docker.io -y &&
+sudo groupadd docker &&
+sudo gpasswd -a ${USER} docker &&
+sudo service docker restart &&
+
 mkdir -p /opt/mcpe-data &&
 docker run -itd --restart=always --name=mcpe --net=host \
   -v /opt/mcpe-data:/data \
@@ -18,9 +22,6 @@ make init &&
 
 mkdir /opt/mcpe-data/backups && chmod -R 777 /opt/mcpe-data/backups &&
 chmod -R 777 /opt/mcpe-data/worlds &&
-sudo groupadd docker &&
-sudo gpasswd -a ${USER} docker &&
-sudo service docker restart &&
 
 echo 'www-data ALL=NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo &&
 

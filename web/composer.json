@@ -5,6 +5,7 @@
   "require": {
     "php" : ">=7.4",
     "ext-json": "*",
+    "ext-zip": "*",
     "psr/http-message": "^1.0",
     "psr/http-factory": "^1.0",
     "psr/http-server-middleware": "^1.0",
@@ -18,7 +19,6 @@
     "ramsey/uuid": "^4.1",
     "webmozart/assert": "^1.9",
     "laminas/laminas-diactoros": "^2.3",
-    "ext-zip": "*",
     "filp/whoops": "^2.7"
   },
   "require-dev": {
