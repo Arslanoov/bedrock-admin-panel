@@ -50,7 +50,7 @@ First command:
     sudo apt-get update -y &&
     
     cd / &&
-    apt install git &&
+    apt install git -y &&
     git clone https://github.com/Arslanoov/bedrock-admin-panel.git &&
     cd /bedrock-admin-panel &&
     
