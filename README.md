@@ -63,6 +63,7 @@ First command:
       -v /opt/mcpe-data:/data \
       lomot/minecraft-bedrock:1.16.1.02 &&
     
+    apt install docker-compose -y &&
     apt install make -y &&
     make init &&
     
