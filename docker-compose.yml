@@ -19,8 +19,6 @@ services:
     volumes:
       - ./web:/app
       - ../opt/mcpe-data:/app/data
-    depends_on:
-      - postgres
 
   php-cli:
     build:
@@ -31,8 +29,6 @@ services:
       - ../opt/mcpe-data:/app/data
       - composer:/root/.composer/cache
     tty: true
-    depends_on:
-      - postgres
 
 volumes:
   composer:
