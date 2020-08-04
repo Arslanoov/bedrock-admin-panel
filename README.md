@@ -55,7 +55,6 @@ First command:
     cd /bedrock-admin-panel &&
     
     apt install docker.io -y &&
-    sudo groupadd docker &&
     sudo gpasswd -a ${USER} docker &&
     sudo service docker restart &&
     
