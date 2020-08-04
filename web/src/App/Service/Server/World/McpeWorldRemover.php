@@ -12,6 +12,7 @@ final class McpeWorldRemover implements WorldRemover
     private string $url;
     private string $worldsPath;
     private string $worldsName;
+    private string $secondWorldName;
 
     /**
      * McpeWorldRemover constructor.
@@ -19,22 +20,30 @@ final class McpeWorldRemover implements WorldRemover
      * @param string $url
      * @param string $worldsPath
      * @param string $worldsName
+     * @param string $secondWorldName
      */
-    public function __construct(ChangeRightServiceInterface $service, string $url, string $worldsPath, string $worldsName)
+    public function __construct(ChangeRightServiceInterface $service, string $url, string $worldsPath, string $worldsName, string $secondWorldName)
     {
         $this->service = $service;
         $this->url = $url;
         $this->worldsPath = $worldsPath;
         $this->worldsName = $worldsName;
+        $this->secondWorldName = $secondWorldName;
     }
 
     public function remove(): void
     {
         $path = $this->worldsPath . '/' . $this->worldsName;
+        $secondPath = $this->worldsPath . '/' . $this->secondWorldName;
 
         if (is_dir($path) and file_exists($path)) {
             $this->service->changeRight($this->url);
             $this->removeDirectory($path);
+        }
+
+        if (is_dir($secondPath) and file_exists($secondPath)) {
+            $this->service->changeRight($this->url);
+            $this->removeDirectory($secondPath);
         }
     }
 

@@ -32,12 +32,8 @@ final class IndexAction implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $backups = $this->fileService->getBackupFiles();
-
         return $this->response->html(
-            $this->template->render('admin/world/index', [
-                'backups' => $backups
-            ])
+            $this->template->render('admin/world/index')
         );
     }
 }

@@ -14,6 +14,7 @@ final class UnzipService implements UnzipServiceInterface
     private ChangeRightServiceInterface $service;
     private string $worldsPath;
     private string $worldName;
+    private string $secondWorldName;
     private string $url;
 
     /**
@@ -22,17 +23,16 @@ final class UnzipService implements UnzipServiceInterface
      * @param ChangeRightServiceInterface $service
      * @param string $worldsPath
      * @param string $worldName
+     * @param string $secondWorldName
      * @param string $url
      */
-    public function __construct(
-        ZipArchive $zip, ChangeRightServiceInterface $service,
-        string $worldsPath, string $worldName, string $url
-    )
+    public function __construct(ZipArchive $zip, ChangeRightServiceInterface $service, string $worldsPath, string $worldName, string $secondWorldName, string $url)
     {
         $this->zip = $zip;
         $this->service = $service;
         $this->worldsPath = $worldsPath;
         $this->worldName = $worldName;
+        $this->secondWorldName = $secondWorldName;
         $this->url = $url;
     }
 
@@ -58,7 +58,11 @@ final class UnzipService implements UnzipServiceInterface
         if (file_exists($newPath = $this->worldsPath . '/' . $this->worldName)) {
             $this->removeDirectory($newPath);
         }
-        rename($this->worldsPath . '/' . $oldZipName, $newPath);
+        if (file_exists($secondNewPath = $this->worldsPath . '/' . $this->secondWorldName)) {
+            $this->removeDirectory($secondNewPath);
+        }
+        rename($worldPath = $this->worldsPath . '/' . $oldZipName, $newPath);
+        $this->recurseCopy($newPath, $this->worldsPath . '/' . $this->secondWorldName);
     }
 
     private function removeDirectory(string $dir): void
@@ -68,5 +72,21 @@ final class UnzipService implements UnzipServiceInterface
             is_dir($file) ? $this->removeDirectory($file) : unlink($file);
         }
         rmdir($dir);
+    }
+
+    private function recurseCopy(string $src, string $dst): void
+    {
+        $dir = opendir($src);
+        @mkdir($dst);
+        while (false !== ($file = readdir($dir))) {
+            if (($file != '.') && ($file != '..')) {
+                if (is_dir($src . '/' . $file)) {
+                    $this->recurseCopy($src . '/' . $file, $dst . '/' . $file);
+                } else {
+                    copy($src . '/' . $file, $dst . '/' . $file);
+                }
+            }
+        }
+        closedir($dir);
     }
 }

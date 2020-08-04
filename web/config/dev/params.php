@@ -11,6 +11,7 @@ return [
     'world' => [
         'path' => '/app/dummy/worlds',
         'name' => 'level',
+        'name2' => 'level1',
         'backupsPath' => '/app/dummy/backups'
     ],
     'permission' => [

@@ -41,6 +41,7 @@ $container->set(UnzipServiceInterface::class, function (Container $container) {
         $container->get(ChangeRightServiceInterface::class),
         $container->get('config')['world']['path'],
         $container->get('config')['world']['name'],
+        $container->get('config')['world']['name2'],
         $container->get('config')['server']['url']
     );
 });
@@ -58,7 +59,8 @@ $container->set(WorldRemover::class, function (Container $container) {
         $container->get(ChangeRightServiceInterface::class),
         $container->get('config')['server']['url'],
         $container->get('config')['world']['path'],
-        $container->get('config')['world']['name']
+        $container->get('config')['world']['name'],
+        $container->get('config')['world']['name2']
     );
 });
 
@@ -66,6 +68,7 @@ $container->set(WorldBackupMaker::class, function (Container $container) {
     return new McpeWorldTimestampBackupMaker(
         $container->get('config')['world']['path'],
         $container->get('config')['world']['name'],
+        $container->get('config')['world']['name2'],
         $container->get('config')['world']['backupsPath'],
     );
 });
