@@ -25,7 +25,7 @@ chmod -R 777 /opt/mcpe-data/worlds &&
 
 echo 'www-data ALL=NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo &&
 
-sudo sh -c "echo '80.87.202.253' >> /bedrock-admin-panel/web/server.ip" &&
+sudo sh -c "echo '{{IP}}' >> /bedrock-admin-panel/web/server.ip" &&
 
 sudo apt-get install php7.4 -y &&
 
