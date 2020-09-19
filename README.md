@@ -61,7 +61,7 @@ First command:
     mkdir -p /opt/mcpe-data &&
     docker run -itd --restart=always --name=mcpe --net=host \
       -v /opt/mcpe-data:/data \
-      lomot/minecraft-bedrock:1.16.1.02 &&
+      lomot/minecraft-bedrock:1.16.40.02 &&
     
     apt install docker-compose -y &&
     apt install make -y &&
